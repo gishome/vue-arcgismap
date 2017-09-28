@@ -1,6 +1,7 @@
-# vue-map
+# vue-arcgismap
 
-> A Vue.js project
+> A Vue.js+Arcgis javascript API project 
+> 一个基于vue和arcgis js API的应用框架，不断完善中....
 
 ## Build Setup
 
