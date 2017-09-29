@@ -1,4 +1,7 @@
+import Chm from '@/core/Chm';
+
 export const createMap = function (loader, router, title) {
+
   const esriLoader = loader
   esriLoader.dojoRequire([
     'esri/core/urlUtils',
@@ -14,11 +17,9 @@ export const createMap = function (loader, router, title) {
     'widgets/MyPopup'
   ], (urlUtils, watchUtils, MapView, Map, VectorTileLayer, Layer, Expand, Legend, LayerList, Search,MyPopup) => {
     const urlObject = urlUtils.urlToObject(window.location.href)
-    const map = new Map({basemap: 'topo-vector'})
-    const view = new MapView({map: map, container: 'viewDiv'})
-    view.then(() => {
- 
-    })
+    const map = new Map({basemap: 'topo-vector'});
+    const view = new MapView({map: map, container: 'viewDiv'});
+    Chm.setView(view);
     const searchWidget = new Search({view: view})
   })
 }
