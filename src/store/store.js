@@ -14,6 +14,9 @@ export const store = new Vuex.Store({
       searchPane: {
         active: false
       }
+    },
+    view: {
+      loaded: false
     }
   },
   getters: {
@@ -21,11 +24,11 @@ export const store = new Vuex.Store({
     getSelectedLayers: state => state.selectedLayers,
     getRouterQuery: state => state.route.query,
     getTest: state => state.test,
-    getSearchPaneActive: state=> state.ui.searchPane.active
+    getSearchPaneActive: state => state.ui.searchPane.active
   },
   actions: {
-    loadLayers({commit,payload,option}) {
-  
+    loadLayers({commit, payload, option}) {
+
       axios
         .get(config.getUrl())
         .then(response => {
@@ -34,22 +37,22 @@ export const store = new Vuex.Store({
         })
         .catch(error => console.log(error))
     },
-    searchPane(context,param) {
-      if(param.switchpane){
+    searchPane(context, param) {
+      if (param.switchpane) {
         context.commit('SWITCH_SEARCHPANE', param);
       }
-     
+
     }
 
   },
   mutations: {
     SWITCH_SEARCHPANE(state, active) {
-      if(state.ui.searchPane.active){
+      if (state.ui.searchPane.active) {
         state.ui.searchPane.active = false;
-      }else{
+      } else {
         state.ui.searchPane.active = true
       }
-     
+
     },
     ADD_LAYERS(state, layers) {
       if (!state.allLayers.length) {

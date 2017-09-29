@@ -1,7 +1,7 @@
 <template>
   <div class="mapframe">
 
-    <div id='viewDiv' class="map">
+    <div id='viewDiv' v-loading.body="!loaded" class="map">
     </div>
 
   </div>
@@ -9,7 +9,8 @@
 
 <script>
 import './Map/dojoConfig'
-import * as esriLoader from 'esri-loader'
+// import * as esriLoader from 'esri-loader'
+import Chm from '@/core/Chm'
 import { createMap } from './Map/createMap'
 import { mapGetters } from 'vuex'
 import SearchPane from '@/components/SearchPane'
@@ -29,23 +30,13 @@ export default {
     }
   },
   computed: mapGetters({
-    selectedLayers: 'getSelectedLayers',
-    routerQuery: 'getRouterQuery',
-    test: 'getTest'
+    loaded: 'checkMapLoaded',
   }),
   mounted() {
-    if (!esriLoader.isLoaded()) {
-      esriLoader.bootstrap((err) => {
-        if (err) {
-          console.error(err)
-        }
-        createMap(esriLoader, this.$router, 'myMap')
-      }, {
-          url: 'https://js.arcgis.com/4.4/'
-        })
-    } else {
-      createMap(esriLoader, this.$router, 'myMap')
-    }
+  
+    Chm.createMap({
+      container:'viewDiv'
+    });
   }
 }
 </script>
