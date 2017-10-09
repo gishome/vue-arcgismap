@@ -9,7 +9,6 @@ import Element from 'element-ui'
 import Chm from './core/Chm'
 
 // const Chm = require('./core/Chm');
-
 Vue.use(Element);
 
 Vue.config.productionTip = false

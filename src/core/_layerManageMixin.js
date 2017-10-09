@@ -36,9 +36,6 @@ export default {
           .view
           .map
           .add(gl);
-        this
-          .layers
-          .push(gl);
       })
 
       return this.view;

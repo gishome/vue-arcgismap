@@ -14,7 +14,9 @@ class Chm {
           console.error(err)
         }
         this._createMap(param);
-      }, {url: 'https://js.arcgis.com/4.4/' /*'https://js.arcgis.com/4.4/'*/})
+      }, {
+        url: 'https://js.arcgis.com/4.5/'/*'https://js.arcgis.com/4.4/'*/
+      })
 
     } else {
       this._createMap(esriLoader, this.$router, 'myMap')
@@ -56,6 +58,10 @@ class Chm {
           .vue
           .$store
           .dispatch({type: 'mapLoaded'});
+        this
+          .vue
+          .$store
+          .dispatch({type:'getLayers'});
       })
   };
 
@@ -71,7 +77,6 @@ class Chm {
   }
 }
 
-// _layerManageMixin.mixin(Chm);
-
+_layerManageMixin.mixin(Chm);
 
 export default Chm

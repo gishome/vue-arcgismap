@@ -3,6 +3,7 @@
 
     <div id='viewDiv' v-loading.body="!loaded" class="map">
     </div>
+    <LayerManager/>
 
   </div>
 </template>
@@ -14,6 +15,7 @@ import Chm from '@/core/Chm'
 import { createMap } from './Map/createMap'
 import { mapGetters } from 'vuex'
 import SearchPane from '@/components/SearchPane'
+import LayerManager from '@/components/LayerManager'
 
 export default {
   name: 'map',
@@ -23,7 +25,8 @@ export default {
     }
   },
   components: {
-    SearchPane
+    SearchPane,
+    LayerManager
   },
   methods: {
     updateTitle(value) {
@@ -33,9 +36,9 @@ export default {
     loaded: 'checkMapLoaded',
   }),
   mounted() {
-  
+
     Chm.createMap({
-      container:'viewDiv'
+      container: 'viewDiv'
     });
   }
 }
@@ -43,7 +46,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-@import url('https://js.arcgis.com/4.4/esri/themes/light/main.css');
+@import url('https://js.arcgis.com/4.5/esri/css/main.css');
 .mapframe {
   width: 100%;
   height: 100%;

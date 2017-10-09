@@ -21,7 +21,6 @@ export default {
     }
   }, methods: {
     _swtich(value) {
-      debugger;
       this.$store.dispatch({ type: 'searchPane', switchpane: true });
     }
   }, computed: mapGetters({
